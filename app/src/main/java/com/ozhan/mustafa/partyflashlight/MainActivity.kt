@@ -56,18 +56,13 @@ class MainActivity : AppCompatActivity() {
                             maxLaugh = current
                         }
                         if (current > 300) {
-                            if (current > 6 * maxLaugh / 7) {
-                                im.setBackgroundColor(Color.RED)
-                            } else if (current > 5 * maxLaugh / 7) {
-                                im.setBackgroundColor(Color.BLUE)
-                            } else if (current > 4 * maxLaugh / 7) {
-                                im.setBackgroundColor(Color.GREEN)
-                            } else if (current > 3 * maxLaugh / 7) {
-                                im.setBackgroundColor(Color.YELLOW)
-                            } else if (current > 2 * maxLaugh / 7) {
-                                im.setBackgroundColor(Color.WHITE)
-                            } else {
-                                im.setBackgroundResource(R.drawable.asd)
+                            when {
+                                current > 6 * maxLaugh / 7 -> im.setBackgroundColor(Color.RED)
+                                current > 5 * maxLaugh / 7 -> im.setBackgroundColor(Color.BLUE)
+                                current > 4 * maxLaugh / 7 -> im.setBackgroundColor(Color.GREEN)
+                                current > 3 * maxLaugh / 7 -> im.setBackgroundColor(Color.YELLOW)
+                                current > 2 * maxLaugh / 7 -> im.setBackgroundColor(Color.WHITE)
+                                else -> im.setBackgroundResource(R.drawable.asd)
                             }
                         }
                         if (ad == 2) {
@@ -87,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
                 ad = 0
                 interstitial = InterstitialAd(this@MainActivity)
-                interstitial.adUnitId = R.string.ad_id.toString()
+                interstitial.adUnitId = getString(R.string.ad_id)
 
                 val adRequest1 = AdRequest.Builder().build()
 
